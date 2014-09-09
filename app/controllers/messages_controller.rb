@@ -5,6 +5,9 @@ class MessagesController < ApplicationController
 
   def new
     @message = Message.new
+    respond_to do |format|
+       format.js
+     end
   end
 
   def create
@@ -13,11 +16,13 @@ class MessagesController < ApplicationController
       @message = Message.new(to: phone, from: message_params[:from], body: message_params[:body], media_url: message_params[:media_url])
       if @message.save
         flash[:notice] = "Your message was sent!"
+        respond_to do |format|
+          format.js
+        end
       else
         render 'new'
       end
     end
-    redirect_to messages_path
   end
 
   def show

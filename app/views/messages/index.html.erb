@@ -1,5 +1,5 @@
 <h2>Messages</h2>
-
+<div id="messages">
 <%= render @messages %>
-
-<p><%= link_to 'New Message', new_message_path %> -or-  <%= link_to 'See Contacts', contacts_path %></p>
+</div>
+<p><%= link_to 'New Message', new_message_path, id: "new-message", remote: true %> -or-  <%= link_to 'See Contacts', contacts_path %></p>
