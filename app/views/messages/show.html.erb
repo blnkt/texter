@@ -1,0 +1,5 @@
+<p>From <%= Contact.find_by(phone: @message.from).name %></p>
+<p>To <%= Contact.find_by(phone: @message.to).name %></p>
+
+<p><%= @message.body %></p>
+<img src= <%= @message.media_url %>>

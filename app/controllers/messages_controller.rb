@@ -10,8 +10,7 @@ class MessagesController < ApplicationController
   def create
     @phones = message_params[:to].slice(0..-2)
     @phones.each do |phone|
-      @message = Message.new(to: phone, from: message_params[:from], body: message_params[:body])
-      binding.pry
+      @message = Message.new(to: phone, from: message_params[:from], body: message_params[:body], media_url: message_params[:media_url])
       if @message.save
         flash[:notice] = "Your message was sent!"
       else
@@ -27,6 +26,6 @@ class MessagesController < ApplicationController
 
 private
   def message_params
-    params.require(:message).permit({to: []}, :from, :body)
+    params.require(:message).permit({to: []}, :from, :body, :media_url)
   end
 end

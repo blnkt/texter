@@ -11,6 +11,7 @@ private
         :user => ENV['TWILIO_ACCOUNT_SID'],
         :password => ENV['TWILIO_AUTH_TOKEN'],
         :payload => { :Body => body,
+                      :MediaURL => media_url,
                       :To => to,
                       :From => from }
       ).execute
